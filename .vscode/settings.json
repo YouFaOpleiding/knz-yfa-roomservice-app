@@ -1,6 +1,7 @@
 {
   "eslint.validate": ["vue", "html", "javascript"],
   "vetur.validation.template": true,
+  "files.eol": "\n",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
