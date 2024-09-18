@@ -1,8 +1,9 @@
 <template>
-  <router-link to="/">Home</router-link> |
-  <router-link to="/checkout">Checkout</router-link>
   <div id="nav" class="navbar d-flex align-items-start position-absolute w-100 p-3 pe-none">
-    <select v-model="selectie" class="btn btn-sm p-2 mt-5 text-white text-capitalize pe-auto">
+    <select
+      v-model="selectie"
+      class="btn btn-primary btn-sm px-4 py-2 mt-5 text-white text-capitalize pe-auto"
+    >
       <option class="text-capitalize">Alles</option>
       <option class="text-capitalize">gerechten</option>
       <option class="text-capitalize">snacks</option>
@@ -13,7 +14,7 @@
       <button
         @click="toggleCart()"
         id="cartDropdown"
-        class="btn btn-success btn-sm p-2 d-flex justify-content-center align-items-center"
+        class="btn btn-primary btn-sm p-2 d-flex justify-content-center align-items-center"
         aria-expanded="false"
         aria-haspopup="true"
       >

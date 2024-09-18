@@ -20,10 +20,11 @@
         >
           <p class="p-2 me-auto mb-0 text-start">{{ getItemCountString(item) + item.content.titel }}</p>
           <p class="p-2 mb-0 text-end"><curr :value="getItemSumtotal(item)" /></p>
-          <div @click="removeItem(item.content)" class="btn btn-success px-1 py-0 my-auto">
+          <div @click="removeItem(item.content)" class="btn btn-primary px-1 py-0 my-auto">
             <fa icon="square-minus" />
           </div>
         </div>
+        <router-link class="btn btn-primary" to="/checkout">Checkout</router-link>
       </div>
     </div>
   </div>

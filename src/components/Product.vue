@@ -5,7 +5,7 @@
     <p>{{ item.beschrijving }}</p>
     <div class="d-flex flex-row justify-content-center align-items-center">
       <p class="fw-bold pe-2 m-0"><curr :value="item.prijs" /></p>
-      <div @click="addItem(item)" class="btn btn-success">
+      <div @click="addItem(item)" class="btn btn-primary">
         <fa icon="cart-plus" class="fa-plus fa-xl" />
       </div>
     </div>
