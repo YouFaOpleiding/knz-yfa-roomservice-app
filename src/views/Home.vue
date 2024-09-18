@@ -24,9 +24,12 @@ export default {
   methods: {
     addItem(item) {
       this.$emit('addItem', item)
+    },
+    removeItem(item) {
+      this.$emit('removeItem', item)
     }
   },
   props: ['cart', 'filter'],
-  emits: ['addItem']
+  emits: ['addItem', 'removeItem']
 }
 </script>

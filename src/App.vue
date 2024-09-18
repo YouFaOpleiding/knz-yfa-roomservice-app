@@ -1,6 +1,6 @@
 <template>
   <navbar :cart="cart" @set-filter="setFilter" @remove-item="removeItem" />
-  <router-view :cart="cart" :filter="selectie" @add-item="addItem" />
+  <router-view :cart="cart" :filter="selectie" @add-item="addItem" @remove-item="removeItem" />
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
       let inserted = false
 
       this.cart.forEach(elem => {
-        if (item === elem.content) {
+        if (item.titel === elem.content.titel) {
           elem.count++
           inserted = true
         }
@@ -66,21 +66,21 @@ img {
 }
 
 h1 {
-  background-color: var(--blue);
+  background-color: var(--blue) !important;
 }
 
-.btn {
+.btn-primary {
   background-color: var(--blue) !important;
   border: 2px solid var(--blue) !important;
 }
 
-.btn:hover,
-.btn:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: var(--light-blue) !important;
   border: 2px solid var(--light-blue-border) !important;
 }
 
-.btn:active {
+.btn-primary:active {
   background-color: var(--light-blue) !important;
   border: 2px solid var(--light-blue-border) !important;
 }
