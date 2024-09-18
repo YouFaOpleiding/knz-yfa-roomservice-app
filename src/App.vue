@@ -1,30 +1,91 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <navbar :cart="cart" @set-filter="setFilter" @remove-item="removeItem" />
+  <router-view :cart="cart" :filter="selectie" @add-item="addItem" />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from '@/components/Navbar'
 
-nav {
-  padding: 30px;
+export default {
+  name: 'RoomserviceApp',
+  data() {
+    return {
+      cart: [],
+      selectie: 'Alles'
+    }
+  },
+  components: {
+    Navbar
+  },
+  methods: {
+    addItem(item) {
+      let inserted = false
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+      this.cart.forEach(elem => {
+        if (item === elem.content) {
+          elem.count++
+          inserted = true
+        }
+      })
 
-    &.router-link-exact-active {
-      color: #42b983;
+      if (!inserted) this.cart.push({ content: item, count: 1 })
+    },
+    removeItem(item) {
+      let wipe = -1
+      let i = 0
+
+      for (i = 0; i < this.cart.length; i++) {
+        if (item == this.cart[i].content) {
+          this.cart[i].count--
+          if (this.cart[i].count < 1.0) wipe = i
+        }
+      }
+
+      if (wipe >= 0) this.cart.splice(wipe, 1)
+    },
+    setFilter(string) {
+      this.selectie = string
     }
   }
+}
+</script>
+
+<style lang="scss">
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+:root {
+  --blue: #0077b5;
+  --light-blue: #2995d3;
+  --light-blue-border: #72b8e0b7;
+  --orange: #e68523;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+
+h1 {
+  background-color: var(--blue);
+}
+
+.btn {
+  background-color: var(--blue) !important;
+  border: 2px solid var(--blue) !important;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--light-blue) !important;
+  border: 2px solid var(--light-blue-border) !important;
+}
+
+.btn:active {
+  background-color: var(--light-blue) !important;
+  border: 2px solid var(--light-blue-border) !important;
+}
+
+option {
+  background-color: gray;
 }
 </style>
